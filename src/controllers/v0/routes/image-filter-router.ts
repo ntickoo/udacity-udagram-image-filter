@@ -25,7 +25,7 @@ router.get("/", async (req: Request, resp: Response) => {
   var url: string = req.query.image_url;
 
   if (isNullOrWhiteSpace(url) || !isWebUri(url)) {
-    resp.status(400).send("Query param image_url cannot be empty.");
+    resp.status(400).send("Query param image_url is not valid.");
   } else {
     try {
       const path: string = await filterImageFromURL(url);
