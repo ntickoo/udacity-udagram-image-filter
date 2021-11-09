@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
+import { IndexRouter } from './controllers/index.router';
 
 (async () => {
 
@@ -33,10 +34,13 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   
   // Root Endpoint
   // Displays a simple message to the user
+  app.use('/', IndexRouter);
+
+  // Root URI call
   app.get( "/", async ( req, res ) => {
-    res.send("try GET /filteredimage?image_url={{}}")
+    res.send( "Use the path and query param pattern for filtering images. </br> <b> /filteredimage?image_url={{URL}} </b>" );
   } );
-  
+    
 
   // Start the Server
   app.listen( port, () => {
