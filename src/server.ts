@@ -36,7 +36,11 @@ import { IndexRouter } from './controllers/index.router';
   // Displays a simple message to the user
   app.use('/', IndexRouter);
 
-  
+  // Root URI call
+  app.get( "/", async ( req, res ) => {
+    res.send( "Use the path and query param pattern for filtering images. </br> <b> /filteredimage?image_url={{URL}} </b>" );
+  } );
+    
 
   // Start the Server
   app.listen( port, () => {
